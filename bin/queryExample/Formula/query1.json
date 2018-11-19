@@ -1,0 +1,8 @@
+{
+	"formula": "AxFy ( ( a && b ) && ( A ( AkG(c) pUq (d) ) ) )",
+	"x": ["act", "act1", "act2"],
+	"y": ["act2","act4"],
+	"k": ["act3"],
+	"p": ["act1", "act2"],
+	"q": ["act2"]
+}

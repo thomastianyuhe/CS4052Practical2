@@ -1,0 +1,5 @@
+{
+    "formula": "AaFb (p && q)",
+    "a": ["act1", "act2"],
+    "b": ["act3", "act4"]
+}

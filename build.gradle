@@ -1,0 +1,85 @@
+plugins {
+  id 'org.unbroken-dome.test-sets' version '1.2.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+repositories {
+    jcenter()
+}
+
+sourceSets {
+    test {
+        java.srcDir file('src/test/java')
+        resources.srcDir file('src/test/resources')
+    }
+}
+
+configurations {
+  testOutput.extendsFrom(testCompile)
+}
+
+jacoco {
+  toolVersion = '0.7.5.201505241946'
+}
+
+tasks.withType(JavaCompile) {
+			    options.encoding = "UTF-8"
+	}
+
+tasks.withType(JavaCompile) {
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
+    }
+    
+tasks.withType(Test) {
+  reports.html.destination = file("${reporting.baseDir}/${name}/junit")
+     	
+  jacoco {
+	 append = false
+	 destinationFile = file("${reporting.baseDir}/jacoco/${name}/jacoco.exec")
+  }
+}
+
+jacocoTestReport {
+  sourceDirectories = files('src/main/java')
+  classDirectories =  files("$buildDir/classes/main")
+  executionData = fileTree(dir:"${reporting.baseDir}/jacoco/", include: 'test/*.exec')
+  reports {
+	xml.enabled true
+	csv.enabled false
+	html.destination "${reporting.baseDir}/test/coverage"
+	xml.destination "${reporting.baseDir}/test/coverage/jacocoTestReport.xml"
+  }
+}
+
+task jacocoIntegrationTestReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+  sourceDirectories = files('src/main/java')
+  classDirectories =  files("$buildDir/classes/main")
+  executionData = fileTree(dir:"${reporting.baseDir}/jacoco/", include: 'integrationTest/*.exec')
+  reports {
+	xml.enabled true
+	csv.enabled false
+	html.destination "${reporting.baseDir}/integrationTest/coverage"
+	xml.destination "${reporting.baseDir}/integrationTest/coverage/jacocoTestReport.xml"
+  }
+}
+
+task coverage{
+  dependsOn test
+  dependsOn jacocoTestReport
+  finalizedBy jacocoIntegrationTestReport
+}
+
+dependencies {
+  //Antlr
+  compile fileTree(dir: 'libs', include: '*.jar')
+    
+  //Gson
+  compile 'com.google.code.gson:gson:2.3'
+    
+  //JUnit
+  testCompile 'junit:junit:4.12' 
+}
+

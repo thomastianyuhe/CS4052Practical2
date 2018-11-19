@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="55ebdec2-abfa-44c6-908f-1cd470937d1e" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-908909286">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="46" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="46" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="2105" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="2105" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/formula/FormulaParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2567">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>recursiveParseStateFormula</find>
+      <find>FormulaParser</find>
+    </findStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="myGradleHomes">
+      <map>
+        <entry key="$PROJECT_DIR$" value="C:\Users\Thomas He\.gradle\wrapper\dists\gradle-2.6-bin\7og9jkn1p1nxjafu1htp0hhvc\gradle-2.6" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2.6" />
+      </map>
+    </option>
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="Simple" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="Simple" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="availableTasks">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by root project 'Simple'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'Simple'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles classes 'main'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Gradle wrapper files. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="wrapper" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles classes 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'Simple'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jacocoIntegrationTestReport" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes JVM resources 'main:resources'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from root project 'Simple'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="coverage" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Initializes a new Gradle build. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="init" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles Java source 'main:java'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in root project 'Simple'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="jacocoTestReport" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles Java source 'test:java'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in root project 'Simple'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes JVM resources 'test:resources'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of root project 'Simple'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/.gradle" value="0" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1857649829" />
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2710121171" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="2717128771" />
+      </map>
+    </option>
+    <option name="projectBuildClasspath">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <ExternalProjectBuildClasspathPojo>
+              <option name="modulesBuildClasspath">
+                <map>
+                  <entry key="$PROJECT_DIR$">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.unbroken-dome.gradle-plugins/gradle-testsets-plugin/1.2.0/f209c8f1092965300fe600e5b87780127bf3f446/gradle-testsets-plugin-1.2.0.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="name" value="Simple" />
+              <option name="projectBuildClasspath">
+                <list>
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/ant-1.9.3.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/ant-launcher-1.9.3.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-base-services-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-base-services-groovy-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-cli-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-core-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-docs-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-launcher-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-messaging-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-model-core-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-model-groovy-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-native-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-open-api-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-resources-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-tooling-api-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-ui-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/gradle-wrapper-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/groovy-all-2.3.10.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-announce-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-antlr-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-build-comparison-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-build-init-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-code-quality-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-dependency-management-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-diagnostics-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-ear-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-ide-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-ide-native-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-ivy-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-jacoco-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-javascript-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-jetty-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-language-groovy-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-language-java-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-language-jvm-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-language-native-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-language-scala-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-maven-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-osgi-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-platform-base-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-platform-jvm-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-platform-native-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-platform-play-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-plugin-development-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-plugin-use-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-plugins-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-publish-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-reporting-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-resources-http-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-resources-s3-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-resources-sftp-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-scala-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-signing-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-sonar-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-test-kit-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-testing-native-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/gradle-tooling-api-builders-2.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.6-bin/7og9jkn1p1nxjafu1htp0hhvc/gradle-2.6/lib/plugins/ivy-2.2.0.jar" />
+                </list>
+              </option>
+            </ExternalProjectBuildClasspathPojo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/formula/pathFormula/Eventually.java" />
+        <option value="$PROJECT_DIR$/src/main/java/formula/pathFormula/Always.java" />
+        <option value="$PROJECT_DIR$/src/main/java/formula/FormulaParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1612" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="formula" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="formula" type="462c0819:PsiDirectoryNode" />
+              <item name="stateFormula" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="modelChecker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS4052-Practical2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542657892008" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55ebdec2-abfa-44c6-908f-1cd470937d1e" name="Default Changelist" comment="" />
+      <created>1542641608949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542641608949</updated>
+      <workItem from="1542641615123" duration="8146000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8146000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24948454" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="3" weight="0.32897863" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Gradle" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.24948454" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="3" weight="0.32897863" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Gradle" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Until.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Always.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Eventually.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/Next.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/pathFormula/PathFormula.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/ThereExists.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/function/Predicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/ModelChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/ForAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/BoolProp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/AtomicProp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/And.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/Or.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/Not.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/stateFormula/StateFormula.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/formula/FormulaParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2567">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="readme.tex"> 
+<meta name="date" content="2016-08-09 01:32:00"> 
+<link rel="stylesheet" type="text/css" href="readme.css"> 
+</head><body 
+>
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>Readme</h3>
+<!--l. 10--><p class="noindent" >This document is to help you get started with your practical. <span 
+class="cmti-12">Note</span>, you should
+fully read the practical specification before referring to this document. The task is
+to implement a model checker that,
+      <ul class="itemize1">
+      <li class="itemize">Accepts a transition system ts, an asCTL constraint <span 
+class="cmmi-12">c </span>and an asCTL
+      formula <span 
+class="cmmi-12">f </span>and
+      </li>
+      <li class="itemize">Returns whether or not the transition system ts satisfies the formula
+      <span 
+class="cmmi-12">f </span>under the constraint <span 
+class="cmmi-12">c </span>- that is, whether or not TS satisfies <span 
+class="cmmi-12">f </span>only
+      taking into account paths that satisfy <span 
+class="cmmi-12">c</span>.</li></ul>
+<!--l. 16--><p class="indent" >   In order that you may spend more time on the implementation of
+the model checker, an <span 
+class="cmti-12">asCTL </span>parser has been provided. The following
+two sections explain the expected input format of the <span 
+class="cmti-12">asCTL </span>parser and
+the equivalent Java representations that input formulae are transformed
+to.
+<!--l. 18--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-20002"></a>Input Formula</h3>
+<!--l. 21--><p class="noindent" >The formula parser reads in formulae in a JSON format. The JSON file must
+contain a single JSON object with one mandatory member of type string:
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">"formula"</span></span></span>. Other fields are described later.
+   <!--l. 23-->
+<div class="lstlisting" id="listing-1"><span class="label"><a 
+ id="x1-2001r1"></a></span><span 
+class="cmsy-10x-x-120">{</span>&#x00A0;<br /><span class="label"><a 
+ id="x1-2002r2"></a></span>&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#8221;formula&#8221;:&#8221;...&#8221;&#x00A0;<br /><span class="label"><a 
+ id="x1-2003r3"></a></span><span 
+class="cmsy-10x-x-120">}</span>
+   </div>
+<!--l. 29--><p class="indent" >   As the name suggests, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">"formula"</span></span></span> field contains the <span 
+class="cmti-12">asCTL </span>formula. The
+practical specification already describes the grammar of an asCTL formula. The
+table below gives the mapping from symbols to their encoding as expected by the
+parser:
+                                                                          
+
+                                                                          
+<div class="center" 
+>
+<!--l. 31--><p class="noindent" >
+<div class="tabular"> <table id="TBL-1" class="tabular" 
+cellspacing="0" cellpadding="0" rules="groups" 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1"></colgroup><colgroup id="TBL-1-2g"><col 
+id="TBL-1-2"></colgroup><colgroup id="TBL-1-3g"><col 
+id="TBL-1-3"></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-1"  
+class="td11">Symbol</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-2"  
+class="td11">   Description     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-1-3"  
+class="td11">Input Encoding</td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-1"  
+class="td11">   <span 
+class="cmsy-10x-x-120">¬  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-2"  
+class="td11">    negation       </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-2-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">!</span></span></span>      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-3-1"  
+class="td11">   <span 
+class="cmsy-10x-x-120">&#x2227;  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-3-2"  
+class="td11">      and          </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-3-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">&amp;&amp;</span></span></span>      </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-4-1"  
+class="td11"> <span 
+class="cmsy-10x-x-120">&#x2228; </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-4-2"  
+class="td11"> or </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-4-3"  
+class="td11"> <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">||</span></span></span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-5-1"  
+class="td11">   <span 
+class="cmsy-10x-x-120">&#x2203;  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-5-2"  
+class="td11">   there exists     </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-5-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">E</span></span></span>      </td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-6-1"  
+class="td11"> <span 
+class="cmsy-10x-x-120">&#x2200; </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-6-2"  
+class="td11"> for all </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-6-3"  
+class="td11"> <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">A</span></span></span></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-7-1"  
+class="td11">   <span 
+class="cmsy-10x-x-120"><img 
+src="cmsy10-c-55.png" alt="U" class="10-120x-x-55" />  </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-7-2"  
+class="td11">      until         </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-7-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">U</span></span></span>      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-8-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-8-1"  
+class="td11">   <span 
+class="cmmi-12">X    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-8-2"  
+class="td11">      next         </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-8-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">X</span></span></span>      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-9-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-9-1"  
+class="td11">   <span 
+class="cmmi-12">F    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-9-2"  
+class="td11">    eventually      </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-9-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">F</span></span></span>      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-10-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-10-1"  
+class="td11">   <span 
+class="cmmi-12">G    </span></td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-10-2"  
+class="td11">     always        </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-10-3"  
+class="td11">      <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">G</span></span></span>      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-11-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-11-1"  
+class="td11">  true   </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-11-2"  
+class="td11">      true          </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-11-3"  
+class="td11">     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">TRUE</span></span></span>     </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-12-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-12-1"  
+class="td11">  false  </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-12-2"  
+class="td11">      false         </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-12-3"  
+class="td11">    <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">FALSE</span></span></span>    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-13-"><td  style="white-space:nowrap; text-align:center;" id="TBL-1-13-1"  
+class="td11">  ap    </td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-13-2"  
+class="td11">atomic proposition</td><td  style="white-space:nowrap; text-align:center;" id="TBL-1-13-3"  
+class="td11">  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">[a-z0-9]+</span></span></span>  </td></tr></table></div></div>
+<!--l. 49--><p class="indent" >   Note, the parser is case-sensitive. Where letters are used to denote symbols
+such as <span 
+class="cmsy-10x-x-120">&#x2200;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">TRUE</span></span></span> or <span 
+class="cmsy-10x-x-120">&#x2203;</span>, these symbols must always be upper case. Identifiers used for
+atomic propositions must consist of one or more <span 
+class="cmti-12">lower case </span>letters or
+numbers.
+<!--l. 51--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-30002"></a>Brackets Are Important</h4>
+<!--l. 53--><p class="noindent" >Operators such as <span 
+class="cmsy-10x-x-120"><img 
+src="cmsy10-c-55.png" alt="U" class="10-120x-x-55" /></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">&amp;&amp;</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">||</span></span></span> require bracketing. Below are some example
+formulae. All brackets used in the examples are mandatory.
+   <!--l. 55-->
+<div class="lstlisting" id="listing-2"><span class="label"><a 
+ id="x1-3001r1"></a></span>(p&#x00A0;&amp;&amp;&#x00A0;q)&#x00A0;<br /><span class="label"><a 
+ id="x1-3002r2"></a></span>(fox&#x00A0;<span 
+class="cmsy-10x-x-120">||</span>&#x00A0;dog)&#x00A0;<br /><span class="label"><a 
+ id="x1-3003r3"></a></span>AG&#x00A0;p&#x00A0;<br /><span class="label"><a 
+ id="x1-3004r4"></a></span>EF&#x00A0;critical&#x00A0;<br /><span class="label"><a 
+ id="x1-3005r5"></a></span>AF&#x00A0;(you&#x00A0;&amp;&amp;&#x00A0;me)&#x00A0;<br /><span class="label"><a 
+ id="x1-3006r6"></a></span>A(s&#x00A0;U&#x00A0;t)&#x00A0;<br /><span class="label"><a 
+ id="x1-3007r7"></a></span>E(TRUE&#x00A0;U&#x00A0;(EF&#x00A0;(EG&#x00A0;p)))
+   </div>
+<!--l. 65--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x1-40002"></a>Specifying action constraints</h4>
+<!--l. 67--><p class="noindent" >In order to add action constraints, one or more sets of actions must be added to
+the JSON object as JSON String arrays. Each member of type string array is
+treated as an action set which can be referred to in the formula string by using
+the array member key. For example:
+   <!--l. 69-->
+                                                                          
+
+                                                                          
+<div class="lstlisting" id="listing-3"><span class="label"><a 
+ id="x1-4001r1"></a></span><span 
+class="cmsy-10x-x-120">{</span>&#x00A0;<br /><span class="label"><a 
+ id="x1-4002r2"></a></span>&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#8221;formula&#8221;:&#8221;EF&#x00A0;(s&#x00A0;aUb&#x00A0;t)&#8221;,&#x00A0;<br /><span class="label"><a 
+ id="x1-4003r3"></a></span>&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#8221;a&#8221;:[&#8221;action1&#8221;,&#8221;action2&#8221;],&#x00A0;<br /><span class="label"><a 
+ id="x1-4004r4"></a></span>&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#8221;b&#8221;:[&#8221;action3&#8221;,&#8221;action4&#8221;]&#x00A0;<br /><span class="label"><a 
+ id="x1-4005r5"></a></span><span 
+class="cmsy-10x-x-120">}</span>
+   </div>
+<!--l. 77--><p class="indent" >   Here the until constraint has two action sets <span 
+class="cmmi-12">a </span>and <span 
+class="cmmi-12">b </span>associated with
+it.
+<!--l. 79--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-50003"></a>Java Representation</h3>
+<!--l. 82--><p class="noindent" >The Java representation is close to that of the grammar tree. For example, each
+possible type of state formula (such as <span 
+class="cmsy-10x-x-120">¬</span>&#x03A6;<span 
+class="cmsy-10x-x-120">&#x2223;</span>&#x03A6; <span 
+class="cmsy-10x-x-120">&#x2227; </span>&#x03A6;<span 
+class="cmsy-10x-x-120">&#x2223;</span><span 
+class="cmsy-10x-x-120">&#x2203;</span><span 
+class="cmmi-12">&#x03D5;</span><span 
+class="cmsy-10x-x-120">&#x2223;</span><span 
+class="cmmi-12">&#x2026;</span>) are represented with a
+Java class (<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">Not.class,</span><span 
+class="cmtt-12">&#x00A0;And.class,</span><span 
+class="cmtt-12">&#x00A0;ThereExists.class,</span><span 
+class="cmtt-12">&#x00A0;...</span></span></span>) that extend a
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">StateFormula</span></span></span> class. The same is done for the path formulae. These objects are
+built up into a tree representation of the parsed formula allowing formulae to be
+explored recursively - see the method <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">writeToBuffer()</span></span></span> as an example
+(this method is used to recurse through and print formulae). Figure&#x00A0;<a 
+href="#x1-5001r1">1<!--tex4ht:ref: formula-tree --></a>
+shows an example of how a formula may be represented as a tree of Java
+objects.
+<!--l. 84--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                          
+
+                                                                          
+<a 
+ id="x1-5001r1"></a>
+                                                                          
+
+                                                                          
+<div class="center" 
+>
+<!--l. 85--><p class="noindent" >
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content">((AG p) &amp;&amp; E(p U q))</span></div><!--tex4ht:label?: x1-5001r1 -->
+<!--l. 88--><p class="noindent" ><img 
+src="formula-tree.png" alt="PIC"  
+></div>
+                                                                          
+
+                                                                          
+<!--l. 90--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 92--><p class="indent" >   Note, you can verify that the correct formula has been parsed simply by
+calling print on the formula objects returned by the parser.
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-60004"></a>Parsing Transition Systems</h3>
+<!--l. 96--><p class="noindent" >The transition systems (the models) are also specified in the JSON format. The
+JSON representation is a very literal description of a transition system (a set of
+state objects composed with a set of transition objects). As there are many good
+ways in which a transition system may be represented in your Java model checker,
+a specific representation has not been given. Rather, the state and transition
+JSON objects are parsed into exact Java equivalent objects. It is very likely that
+you may want to transform this into a model that is more easily handled by model
+checking algorithms.
+<!--l. 98--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-70005"></a>Running</h3>
+<!--l. 100--><p class="noindent" >You are to construct a set of JUnit test cases that demonstrate your model
+checker. Example models and formulae are provided in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">src/test/resources</span></span></span>. An
+example JUnit test case can be found in in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-12">src/test/java/modelChecker</span></span></span> that
+demonstrates how to parse and test a model against a formula.
+<!--l. 102--><p class="indent" >   The code must be compiled and tested using gradle. To build the project using
+gradle, the syntax is as follows:
+                                                                          
+
+                                                                          
+   <div class="verbatim" id="verbatim-1">
+$&#x00A0;cd&#x00A0;&#x003C;project_root&#x003E;
+&#x00A0;<br />$&#x00A0;./gradlew&#x00A0;clean&#x00A0;build&#x00A0;test&#x00A0;coverage
+</div>
+<!--l. 106--><p class="nopar" >
+      <ul class="itemize1">
+      <li class="itemize">clean is a gradle task to clean the build directory
+      </li>
+      <li class="itemize">build is a gradle task to build the project (e.g compileJava)
+      </li>
+      <li class="itemize">test is a gradle task to run the unit testing
+      </li>
+      <li class="itemize">coverage is a gradle task to generate the test coverage report</li></ul>
+    
+</body></html> 
+
+                                                                          
+
+
