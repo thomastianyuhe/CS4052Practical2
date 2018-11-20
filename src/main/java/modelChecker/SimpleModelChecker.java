@@ -1,12 +1,12 @@
 package modelChecker;
 
-import formula.pathFormula.Next;
-import formula.pathFormula.PathFormula;
+import formula.pathFormula.*;
 import formula.stateFormula.*;
 import model.Model;
 import model.State;
 import model.Transition;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +34,13 @@ public class SimpleModelChecker implements ModelChecker {
         }
 
         //start from initial states
-        State[] initialStates =  Arrays.stream(states).filter(x -> x.isInit()).toArray(State[]::new);
+        ArrayList<State> initialStates = new ArrayList<>();
+        for(State state: states){
+            if(state.isInit()){
+                initialStates.add(state);
+            }
+        }
+
         for(State initialState: initialStates){
             recursiveExplorer(initialState.getName());
         }
@@ -88,7 +94,25 @@ public class SimpleModelChecker implements ModelChecker {
                 StateFormula subStateFormula = ((Next) pathFormula).stateFormula;
                 Set<String> actions = ((Next) pathFormula).getActions();
                 StateFormula newStateFormula = new Not(new ThereExists(new Next(new Not(subStateFormula), actions)));
+                return newStateFormula;
+            }else if(pathFormula instanceof Until){
+                StateFormula left = ((Until) pathFormula).left;
+                Set<String> leftActions = ((Until) pathFormula).getLeftActions();
+                StateFormula right = ((Until) pathFormula).right;
+                Set<String> rightActions = ((Until) pathFormula).getRightActions();
+                StateFormula newStateFormula = new Or(new ThereExists(new Always(new Not(right), rightActions)), new ThereExists(new Until(new Not(right), new And(new Not(right), new Not(left)), leftActions, rightActions)));
+                return newStateFormula;
+            }else if(pathFormula instanceof Always){
+                StateFormula subStateFormula = ((Always) pathFormula).stateFormula;
+                Set<String> actions = ((Always) pathFormula).getActions();
+                StateFormula newStateFormula = new Not(new ThereExists(new Eventually(new Not(subStateFormula), , )));
+            }else if(pathFormula instanceof Eventually){
+                StateFormula subStateFormula = ((Eventually) pathFormula).stateFormula;
+                Set<String> leftActions = ((Eventually) pathFormula).getLeftActions();
+                Set<String> rightActions = ((Eventually) pathFormula).getRightActions();
+                StateFormula newStateFormula = new Not(new ThereExists(new Always(new Not(subStateFormula),  )));
             }
+
         }
 
     }
