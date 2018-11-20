@@ -8,7 +8,7 @@ public class Next extends PathFormula {
     public final StateFormula stateFormula;
     private Set<String> actions;
 
-    public Next(StateFormula stateFormula, Set<String> actions) {
+            public Next(StateFormula stateFormula, Set<String> actions) {
         this.stateFormula = stateFormula;
         this.actions = actions;
     }

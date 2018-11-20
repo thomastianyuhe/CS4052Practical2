@@ -1,6 +1,8 @@
 package modelChecker;
 
-import formula.stateFormula.StateFormula;
+import formula.pathFormula.Next;
+import formula.pathFormula.PathFormula;
+import formula.stateFormula.*;
 import model.Model;
 import model.State;
 import model.Transition;
@@ -8,6 +10,7 @@ import model.Transition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Set;
 
 public class SimpleModelChecker implements ModelChecker {
 
@@ -62,8 +65,31 @@ public class SimpleModelChecker implements ModelChecker {
         return true;
     }
 
-    private void evaluateFormula(StateFormula formula){
-        //TODO
-    }
+//    private boolean evaluateFormula(StateFormula formula, State state, String[] actions){
+//        if(formula instanceof And){
+//            return evaluateFormula(((And) formula).left, state, actions) && evaluateFormula(((And) formula).right, state, actions);
+//        }else if(formula instanceof AtomicProp){
+//            for (String label: state.getLabel()){
+//                if(label.equals(((AtomicProp) formula).label)){
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }else if(formula instanceof Not){
+//            return !evaluateFormula(formula, state, actions);
+//        }
+//        return false;
+//    }
 
+    private StateFormula convertToENF(StateFormula stateFormula){
+        if(stateFormula instanceof ForAll){
+            PathFormula pathFormula = ((ForAll) stateFormula).pathFormula;
+            if(pathFormula instanceof Next){
+                StateFormula subStateFormula = ((Next) pathFormula).stateFormula;
+                Set<String> actions = ((Next) pathFormula).getActions();
+                StateFormula newStateFormula = new Not(new ThereExists(new Next(new Not(subStateFormula), actions)));
+            }
+        }
+
+    }
 }
