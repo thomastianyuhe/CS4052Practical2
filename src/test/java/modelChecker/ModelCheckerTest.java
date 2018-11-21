@@ -44,7 +44,7 @@ public class ModelCheckerTest {
             String test = formula.toString();
             System.out.println(test);
             // TO IMPLEMENT
-            // assertTrue(mc.check(model, fairnessConstraint, query));
+            assertFalse(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
