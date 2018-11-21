@@ -110,20 +110,20 @@ public class SimpleModelChecker implements ModelChecker {
     private boolean modelChecking(StateFormula CTL, HashSet<State> currentStates) {
         if(CTL instanceof ThereExists){
             if (((ThereExists) CTL).pathFormula instanceof Always){
-                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, new HashSet<State>());
+                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, new HashMap<>());
             } else if (((ThereExists) CTL).pathFormula instanceof Next){
                 return checkNext(((ThereExists) CTL).pathFormula, currentStates);
             } else if (((ThereExists) CTL).pathFormula instanceof Until){
                 return checkUntil(((ThereExists) CTL).pathFormula, currentStates, new HashSet<State>(), false);
             }
         } else if (CTL instanceof And){
-            return modelChecking(((Or) CTL).left, currentStates) && modelChecking(((Or) CTL).right, currentStates;
+            return modelChecking(((Or) CTL).left, currentStates) && modelChecking(((Or) CTL).right, currentStates);
         } else if (CTL instanceof Or){
             return modelChecking(((Or) CTL).left, currentStates) || modelChecking(((Or) CTL).right, currentStates);
         } else if (CTL instanceof Not){
             HashSet<State> notStates = new HashSet<>();
             for(State s: currentStates){
-                if(!stateCheck(((Not) CTL).stateFormula, s){
+                if(!stateCheck(((Not) CTL).stateFormula, s)){
                     return true;
                 }
             }
@@ -141,6 +141,7 @@ public class SimpleModelChecker implements ModelChecker {
         } else if (CTL instanceof BoolProp){
             return ((BoolProp) CTL).value;
         }
+        return false;
     }
 
     private boolean stateCheck(StateFormula CTL, State state){

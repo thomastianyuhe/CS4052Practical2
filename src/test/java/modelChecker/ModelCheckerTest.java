@@ -78,12 +78,15 @@ public class ModelCheckerTest {
             StateFormula query = new FormulaParser("src/test/resources/ctl2.json").parse();
             ModelChecker mc = new SimpleModelChecker();
             boolean result =  mc.check(model, fairnessConstraint, query);
-            assertFalse(result);
+            assertTrue(result);
         }catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
         }
     }
+
+//    @Test
+//    public void modelMutualExclusionDoes
 
 
 }
