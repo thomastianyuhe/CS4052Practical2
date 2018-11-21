@@ -1,0 +1,9 @@
+{
+  "formula": "E ( q aUb p )",
+  "a": [
+    "action1"
+  ],
+  "b": [
+    "action3"
+  ]
+}

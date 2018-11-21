@@ -1,0 +1,9 @@
+{
+  "formula": "EaX ( EaFb ( EaX ( FALSE ) ) ) )",
+  "a": [
+    "action1"
+  ],
+  "b": [
+    "action3"
+  ]
+}

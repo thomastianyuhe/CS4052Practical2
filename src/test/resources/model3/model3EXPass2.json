@@ -1,0 +1,9 @@
+{
+  "formula": "EaX ( q && EaFb ( q && EaX ( q ) ) ) )",
+  "a": [
+    "action1"
+  ],
+  "b": [
+    "action3"
+  ]
+}

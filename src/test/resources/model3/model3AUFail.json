@@ -1,0 +1,9 @@
+{
+  "formula": "A ( ( q ) aUb ( p ) )",
+  "a": [
+    "action1"
+  ],
+  "b": [
+    "action2"
+  ]
+}
