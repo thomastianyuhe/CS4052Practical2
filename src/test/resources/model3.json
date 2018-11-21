@@ -1,0 +1,112 @@
+{
+  "states": [
+    {
+      "init": false,
+      "name": "s0",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": false,
+      "name": "s1",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": false,
+      "name": "s2",
+      "label": [
+        "p"
+      ]
+    },
+    {
+      "init": true,
+      "name": "s3",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": false,
+      "name": "s4",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": true,
+      "name": "s5",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": false,
+      "name": "s6",
+      "label": [
+        "q"
+      ]
+    },
+    {
+      "init": false,
+      "name": "s7",
+      "label": [
+        "p"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "source": "s5",
+      "target": "s4",
+      "actions": [
+        "action1"
+      ]
+    },
+    {
+      "source": "s4",
+      "target": "s3",
+      "actions": [
+        "action1",
+        "action2"
+      ]
+    },
+    {
+      "source": "s3",
+      "target": "s2",
+      "actions": [
+        "action2"
+      ]
+    },
+    {
+      "source": "s3",
+      "target": "s1",
+      "actions": [
+        "action1"
+      ]
+    },
+    {
+      "source": "s1",
+      "target": "s0",
+      "actions": [
+        "action1"
+      ]
+    },
+    {
+      "source": "s1",
+      "target": "s6",
+      "actions": [
+        "action3"
+      ]
+    },
+    {
+      "source": "s6",
+      "target": "s7",
+      "actions": [
+        "action1"
+      ]
+    }
+  ]
+}
