@@ -31,7 +31,7 @@ public class ModelCheckerTest {
             ModelChecker mc = new SimpleModelChecker();
 
             // TO IMPLEMENT
-            // assertTrue(mc.check(model, fairnessConstraint, query));
+            assertFalse(mc.check(model, fairnessConstraint, query));
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
