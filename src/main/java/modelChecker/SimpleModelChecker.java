@@ -45,18 +45,16 @@ public class SimpleModelChecker implements ModelChecker {
         }
 
         //start from initial states
-        ArrayList<State> initialStates = new ArrayList<>();
+        HashSet<State> initialStates = new HashSet<>();
         for(State state: states){
             if(state.isInit()){
                 initialStates.add(state);
             }
         }
 
-        for(State initialState: initialStates){
-            recursiveExplorer(initialState.getName());
-        }
+        StateFormula formula = new And(query, constraint);
 
-        return false;
+        return modelChecking(formula, initialStates);
     }
 
     @Override
@@ -65,59 +63,17 @@ public class SimpleModelChecker implements ModelChecker {
         return null;
     }
 
-//    private HashSet<State> modelChecking(StateFormula CTL, HashSet<State> currentStates, State[] checkedStates) {
-//        if(CTL instanceof ThereExists){
-//            if (((ThereExists) CTL).pathFormula instanceof Always){
-//                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, checkedStates);
-//            } else if (((ThereExists) CTL).pathFormula instanceof Next){
-//                return checkNext(((ThereExists) CTL).pathFormula, currentStates, checkedStates);
-//            } else if (((ThereExists) CTL).pathFormula instanceof Until){
-//                return checkUntil(((ThereExists) CTL).pathFormula, currentStates, checkedStates, false);
-//            }
-//        } else if (CTL instanceof And){
-//            HashSet newStates = modelChecking(((Or) CTL).left, currentStates, checkedStates);
-//            newStates.retainAll(modelChecking(((Or) CTL).right, currentStates, checkedStates));
-//            return newStates;
-//        } else if (CTL instanceof Or){
-//            HashSet newStates = modelChecking(((Or) CTL).left, currentStates, checkedStates);
-//            newStates.addAll(modelChecking(((Or) CTL).right, currentStates, checkedStates));
-//            return newStates;
-//        } else if (CTL instanceof Not){
-//            HashSet nextStates = modelChecking(((Not) CTL).stateFormula, currentStates, checkedStates);
-//            currentStates.removeAll(nextStates);
-//            return currentStates;
-//        } else if (CTL instanceof AtomicProp){
-//            HashSet<State> correctStates = new HashSet<>();
-//            for(State s: currentStates){
-//                String[] labels = s.getLabel();
-//                for(String l: labels){
-//                    if (l.equals(((AtomicProp) CTL).label)){
-//                        correctStates.add(s);
-//                    }
-//                }
-//            }
-//            return correctStates;
-//
-//        } else if (CTL instanceof BoolProp){
-//            if (((BoolProp) CTL).value){
-//                return currentStates;
-//            } else {
-//                return new HashSet<>();
-//            }
-//        }
-//    }
-
     private boolean modelChecking(StateFormula CTL, HashSet<State> currentStates) {
         if(CTL instanceof ThereExists){
             if (((ThereExists) CTL).pathFormula instanceof Always){
-                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, new HashMap<>());
+                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, new HashMap<State, Boolean>());
             } else if (((ThereExists) CTL).pathFormula instanceof Next){
                 return checkNext(((ThereExists) CTL).pathFormula, currentStates);
             } else if (((ThereExists) CTL).pathFormula instanceof Until){
                 return checkUntil(((ThereExists) CTL).pathFormula, currentStates, new HashSet<State>(), false);
             }
         } else if (CTL instanceof And){
-            return modelChecking(((Or) CTL).left, currentStates) && modelChecking(((Or) CTL).right, currentStates);
+            return modelChecking(((And) CTL).left, currentStates) && modelChecking(((Or) CTL).right, currentStates);
         } else if (CTL instanceof Or){
             return modelChecking(((Or) CTL).left, currentStates) || modelChecking(((Or) CTL).right, currentStates);
         } else if (CTL instanceof Not){
@@ -131,7 +87,9 @@ public class SimpleModelChecker implements ModelChecker {
             for(State s: currentStates){
                 String[] labels = s.getLabel();
                 for(String l: labels){
-                    if (l.equals(((AtomicProp) CTL).label)){
+                    String stateLabel = l.trim().replaceAll("”|“", "");
+                    String ctlLabel = ((AtomicProp) CTL).label.trim().replaceAll("”", "");
+                    if (stateLabel.equals(ctlLabel)){
                         return true;
                     }
                 }
@@ -141,6 +99,7 @@ public class SimpleModelChecker implements ModelChecker {
         } else if (CTL instanceof BoolProp){
             return ((BoolProp) CTL).value;
         }
+        System.out.println("Should not reach here");
         return false;
     }
 
