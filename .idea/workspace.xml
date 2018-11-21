@@ -65,6 +65,7 @@
           <entry key="java" value="91" />
           <entry key="json" value="80" />
           <entry key="kt" value="1" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -75,6 +76,7 @@
           <entry key="JSON" value="78" />
           <entry key="Kotlin" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
+          <entry key="XML" value="1" />
           <entry key="yarn.lock" value="2" />
         </counts>
       </usages-collector>
@@ -95,11 +97,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="283" selection-start-line="283" selection-end-line="283" />
+            <state relative-caret-position="-2">
+              <caret line="72" column="73" lean-forward="true" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,13 +110,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/other-examples/constraintTrue.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="145" column="32" lean-forward="true" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1564">
+              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4862">
+              <caret line="286" column="32" lean-forward="true" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -484,6 +501,16 @@
             <path>
               <item name="Simple" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Simple" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Simple" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS4052-Practical2" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -601,7 +628,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542824728234" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542827220646" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -742,20 +769,19 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48882000" />
+    <option name="totallyTimeSpent" value="48993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.20687285" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.20687285" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49965635" weight="0.32897863" />
+      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49896908" visible="true" weight="0.32897863" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5010309" side_tool="true" weight="0.32897863" />
       <window_info anchor="bottom" id="Build" order="3" weight="0.32897863" />
@@ -867,43 +893,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ag fail.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ag pass.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ax fail 2.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ax pass 1.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ag fail.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ag pass.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ax fail 2.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ax pass 1.json" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/model3/model3AXPass2.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/au fail.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/au pass.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ex fail.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ex pass.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/model1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" lean-forward="true" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/mutualExclusion1.json.kt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/au fail.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/au pass.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ex fail.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/ex pass.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/model1/model1.json" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/mutualExclusion1.json.kt" />
     <entry file="file://$PROJECT_DIR$/src/test/resources/modelMutualExclusion.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1734">
@@ -1048,16 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/model3.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/model3.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1734">
           <caret line="102" column="6" lean-forward="true" selection-end-line="112" />
@@ -1095,23 +1087,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="145" column="32" lean-forward="true" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+        <state relative-caret-position="-2">
+          <caret line="72" column="73" lean-forward="true" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/modelChecker/SimpleModelChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/modelChecker/ModelCheckerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="283" selection-start-line="283" selection-end-line="283" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1564">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4862">
+          <caret line="286" column="32" lean-forward="true" selection-start-line="286" selection-start-column="32" selection-end-line="286" selection-end-column="32" />
         </state>
       </provider>
     </entry>
