@@ -16,7 +16,6 @@ public class SimpleModelChecker implements ModelChecker {
     private HashMap<String, State> stateHashMap;
     private HashMap<String, ArrayList<Transition>> transitionHashMap;
     private HashMap<String, ArrayList<Transition>> backwardsTransitions;
-    private HashMap<State, Boolean> checkedStates;
     @Override
     public boolean check(Model model, StateFormula constraint, StateFormula query) {
         // TODO Auto-generated method stub
@@ -25,37 +24,43 @@ public class SimpleModelChecker implements ModelChecker {
         transitionHashMap = new HashMap<>();
         backwardsTransitions = new HashMap<>();
 
-        for(State state: states){
+        for (State state : states) {
             stateHashMap.put(state.getName(), state);
         }
 
         Transition[] transitions = model.getTransitions();
-        Set<String> allActions= new HashSet<>();
-        for(Transition transition: transitions){
+        Set<String> allActions = new HashSet<>();
+        for (Transition transition : transitions) {
             Collections.addAll(allActions, transition.getActions());
-            if(!transitionHashMap.containsKey(transition.getSource())){
+            if (!transitionHashMap.containsKey(transition.getSource())) {
                 transitionHashMap.put(transition.getSource(), new ArrayList<Transition>());
             }
             transitionHashMap.get(transition.getSource()).add(transition);
 
-            if(!backwardsTransitions.containsKey(transition.getTarget())){
+            if (!backwardsTransitions.containsKey(transition.getTarget())) {
                 backwardsTransitions.put(transition.getTarget(), new ArrayList<Transition>());
             }
             backwardsTransitions.get(transition.getTarget()).add(transition);
         }
 
         //start from initial states
-        ArrayList<State> initialStates = new ArrayList<>();
-        for(State state: states){
-            if(state.isInit()){
+        HashSet<State> initialStates = new HashSet<>();
+        for (State state : states) {
+            if (state.isInit()) {
                 initialStates.add(state);
             }
         }
 
-        for(State initialState: initialStates){
-            recursiveExplorer(initialState.getName());
-        }
 
+        constraint = convertToENF(constraint, allActions);
+
+        StateFormula formula = convertToENF(query, allActions);
+
+        for (State s : initialStates) {
+            if (modelChecking(formula, s)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -65,75 +70,32 @@ public class SimpleModelChecker implements ModelChecker {
         return null;
     }
 
-//    private HashSet<State> modelChecking(StateFormula CTL, HashSet<State> currentStates, State[] checkedStates) {
-//        if(CTL instanceof ThereExists){
-//            if (((ThereExists) CTL).pathFormula instanceof Always){
-//                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, checkedStates);
-//            } else if (((ThereExists) CTL).pathFormula instanceof Next){
-//                return checkNext(((ThereExists) CTL).pathFormula, currentStates, checkedStates);
-//            } else if (((ThereExists) CTL).pathFormula instanceof Until){
-//                return checkUntil(((ThereExists) CTL).pathFormula, currentStates, checkedStates, false);
-//            }
-//        } else if (CTL instanceof And){
-//            HashSet newStates = modelChecking(((Or) CTL).left, currentStates, checkedStates);
-//            newStates.retainAll(modelChecking(((Or) CTL).right, currentStates, checkedStates));
-//            return newStates;
-//        } else if (CTL instanceof Or){
-//            HashSet newStates = modelChecking(((Or) CTL).left, currentStates, checkedStates);
-//            newStates.addAll(modelChecking(((Or) CTL).right, currentStates, checkedStates));
-//            return newStates;
-//        } else if (CTL instanceof Not){
-//            HashSet nextStates = modelChecking(((Not) CTL).stateFormula, currentStates, checkedStates);
-//            currentStates.removeAll(nextStates);
-//            return currentStates;
-//        } else if (CTL instanceof AtomicProp){
-//            HashSet<State> correctStates = new HashSet<>();
-//            for(State s: currentStates){
-//                String[] labels = s.getLabel();
-//                for(String l: labels){
-//                    if (l.equals(((AtomicProp) CTL).label)){
-//                        correctStates.add(s);
-//                    }
-//                }
-//            }
-//            return correctStates;
-//
-//        } else if (CTL instanceof BoolProp){
-//            if (((BoolProp) CTL).value){
-//                return currentStates;
-//            } else {
-//                return new HashSet<>();
-//            }
-//        }
-//    }
-
-    private boolean modelChecking(StateFormula CTL, HashSet<State> currentStates) {
+    private boolean modelChecking(StateFormula CTL, State currentState) {
         if(CTL instanceof ThereExists){
             if (((ThereExists) CTL).pathFormula instanceof Always){
-                return checkAlways(((ThereExists) CTL).pathFormula, currentStates, new HashMap<>());
+                return checkAlways(((ThereExists) CTL).pathFormula, currentState, new HashMap<State, Boolean>());
             } else if (((ThereExists) CTL).pathFormula instanceof Next){
-                return checkNext(((ThereExists) CTL).pathFormula, currentStates);
+                return checkNext(((ThereExists) CTL).pathFormula, currentState);
             } else if (((ThereExists) CTL).pathFormula instanceof Until){
-                return checkUntil(((ThereExists) CTL).pathFormula, currentStates, new HashSet<State>(), false);
+                return checkUntil(((ThereExists) CTL).pathFormula, currentState, new HashSet<State>());
             }
         } else if (CTL instanceof And){
-            return modelChecking(((Or) CTL).left, currentStates) && modelChecking(((Or) CTL).right, currentStates);
+            return modelChecking(((And) CTL).left, currentState) && modelChecking(((And) CTL).right, currentState);
         } else if (CTL instanceof Or){
-            return modelChecking(((Or) CTL).left, currentStates) || modelChecking(((Or) CTL).right, currentStates);
+            return modelChecking(((Or) CTL).left, currentState) || modelChecking(((Or) CTL).right, currentState);
         } else if (CTL instanceof Not){
-            HashSet<State> notStates = new HashSet<>();
-            for(State s: currentStates){
-                if(!stateCheck(((Not) CTL).stateFormula, s)){
-                    return true;
-                }
+            if(!modelChecking(((Not) CTL).stateFormula, currentState)){
+                return true;
             }
+            return false;
         } else if (CTL instanceof AtomicProp){
-            for(State s: currentStates){
-                String[] labels = s.getLabel();
-                for(String l: labels){
-                    if (l.equals(((AtomicProp) CTL).label)){
-                        return true;
-                    }
+            // Check all of the labels of the current state
+            String[] labels = currentState.getLabel();
+            for(String l: labels){
+                String stateLabel = l.trim().replaceAll("”|“", "");
+                String ctlLabel = ((AtomicProp) CTL).label.trim().replaceAll("”|“", "");
+                if (stateLabel.equals(ctlLabel)){
+                    return true;
                 }
             }
             return false;
@@ -141,132 +103,84 @@ public class SimpleModelChecker implements ModelChecker {
         } else if (CTL instanceof BoolProp){
             return ((BoolProp) CTL).value;
         }
+        System.out.println("Should not reach here");
         return false;
     }
 
-    private boolean stateCheck(StateFormula CTL, State state){
-        HashSet<State> stateHashset = new HashSet<State>();
-        stateHashset.add(state);
-        return modelChecking(CTL, stateHashset);
-    }
+    private boolean checkNext(PathFormula CTL, State currentState){
 
-    private boolean checkNext(PathFormula CTL, HashSet<State> currentStates){
-        // Finding the next states
-        HashSet<State> nextStates = new HashSet<>();
-        for(State s: currentStates){
-            ArrayList<Transition> transitions = transitionHashMap.get(s.getName());
-            for(Transition t: transitions){
-                // TODO
-                // Add check actions
-                t.getActions();
-                nextStates.add(stateHashMap.get(t.getTarget()));
-            }
-        }
-        // Will check if they satisfy the formula
-        return modelChecking(((Next) CTL).stateFormula, nextStates);
-    }
-
-    private boolean checkUntil(PathFormula CTL, HashSet<State> currentStates, HashSet<State> seen, boolean leftSatisfied){
-        // If previous states satisfy the left formula
-        HashSet<State> correctStates = new HashSet<>();
-        if(leftSatisfied) {
-            // Check if any of the current states evaluate to true for right formula, return true if so
-            // Else find the current states that satisfy the left formula
-            for (State s : currentStates) {
-                if (!seen.contains(s)) {
-                    if (stateCheck(((Until) CTL).right, s)) {
+        ArrayList<Transition> transitions = transitionHashMap.get(currentState.getName());
+        for(Transition t: transitions) {
+            for(String action: t.getActions()){
+                if (((Next) CTL).getActions().contains(action)){
+                    State next = stateHashMap.get(t.getTarget());
+                    if (modelChecking(((Next) CTL).stateFormula, next)){
                         return true;
                     }
+                    break;
+                }
+            }
+            if(modelChecking(((Next) CTL).stateFormula, stateHashMap.get(t.getTarget()))){
+                return true;
+            }
+        }
+        return false;
+    }
 
-                    if (stateCheck(((Until) CTL).left, s)) {
-                        correctStates.add(s);
+    private boolean checkUntil(PathFormula CTL, State currentState, HashSet<State> seen){
+        seen.add(currentState);
+        ArrayList<Transition> transitions = transitionHashMap.get(currentState.getName());
+        for(Transition t: transitions){
+            for(String action: t.getActions()){
+                if (((Until) CTL).getRightActions().contains(action)){
+                    State next = stateHashMap.get(t.getTarget());
+                    if (seen.contains(next)) {
+                        return false;
+                    } else if (modelChecking(((Until) CTL).right, next)){
+                        return true;
                     }
-
-                    seen.add(s);
-                }
-            }
-        } else {
-            for(State s: currentStates){
-                if(stateCheck(((Until) CTL).left, s)){
-                    correctStates.add(s);
                 }
 
-                seen.add(s);
+                if (((Until) CTL).getLeftActions().contains(action)){
+                    State next = stateHashMap.get(t.getTarget());
+                    if (seen.contains(next)) {
+                        return false;
+                    } else if (checkUntil(CTL, next, seen)){
+                        return true;
+                    }
+                }
+                break;
             }
         }
-
-        // If no states satisfy the either formula
-        if (correctStates.isEmpty()) {
-            return false;
-        }
-
-        // Find the next states from the correct states
-        HashSet<State> nextStates = new HashSet<>();
-        for(State s: correctStates){
-            ArrayList<Transition> transitions = transitionHashMap.get(s.getName());
-            for(Transition t: transitions){
-                // TODO
-                // Add check actions
-
-                t.getActions();
-
-                State next = stateHashMap.get(t.getTarget());
-                nextStates.add(next);
-            }
-        }
-        return checkUntil(CTL, nextStates, seen, true);
+        return false;
     }
 
     // Loops
-    private boolean checkAlways(PathFormula CTL, HashSet<State> currentStates, HashMap<State, Boolean> seen){
+    private boolean checkAlways(PathFormula CTL, State currentState, HashMap<State, Boolean> seen){
         // Find the states satifying the formula
-        HashSet<State> correctStates = new HashSet<>();
-        HashSet<State> incorrectStates = new HashSet<>();
-        for(State s: currentStates){
-            // If the state has been seen before and evaluated to true you have found a correct loop
-            // If a state has been found incorrect, ignore it
-            if (seen.containsKey(s)){
-                if (seen.get(s)){
-                    return true;
-                }
-            } else if(stateCheck(((Always) CTL).stateFormula, s)){
-                correctStates.add(s);
-            } else {
-                incorrectStates.add(s);
-            }
+        if (seen.containsKey(currentState)){
+            return seen.get(currentState);
         }
 
-        // If there are no correct states then the formula will not always be true
-        if (correctStates.isEmpty()){
-            return false;
-        } else {
-            for(State s: correctStates){
-                seen.put(s, Boolean.TRUE);
-            }
-            for(State s: incorrectStates){
-                seen.put(s, Boolean.FALSE);
-            }
-        }
+        if (modelChecking(((Always) CTL).stateFormula, currentState)) {
+            seen.put(currentState, Boolean.TRUE);
 
-        // Find the next states from the correct states
-        HashSet<State> nextStates = new HashSet<>();
-        for (State s : correctStates) {
-            ArrayList<Transition> transitions = transitionHashMap.get(s.getName());
+            ArrayList<Transition> transitions = transitionHashMap.get(currentState.getName());
             for (Transition t : transitions) {
-                // TODO
-                // Add check actions
-                t.getActions();
 
-                State next = stateHashMap.get(t.getTarget());
-                nextStates.add(next);
+                for(String action: t.getActions()){
+                    if (((Always) CTL).getActions().contains(action)){
+                        State next = stateHashMap.get(t.getTarget());
+                        if (checkAlways(CTL, next, seen)) {
+                            return true;
+                        }
+                        break;
+                    }
+                }
             }
         }
-        // If you reach a terminal state and all previous have evaluated to true
-        if (nextStates.isEmpty()){
-            return true;
-        } else {
-            return checkAlways(CTL, correctStates, seen);
-        }
+        seen.put(currentState, Boolean.FALSE);
+        return false;
     }
 
 
