@@ -78,7 +78,7 @@ public class ModelCheckerTest {
     public void modelTwoDoesSatisfyCTLTwo() {
         ModelChecker mc = new SimpleModelChecker();
         try{
-            Model model = Model.parseModel("src/test/resources/model3.json");
+            Model model = Model.parseModel("src/test/resources/model2.json");
             StateFormula fairnessConstraint = new FormulaParser("src/test/resources/constraint2.json").parse();
             StateFormula query = new FormulaParser("src/test/resources/ctl2.json").parse();
             boolean result =  mc.check(model, fairnessConstraint, query);
