@@ -61,11 +61,11 @@ public class SimpleModelChecker implements ModelChecker {
             }
         }
         for (State s : initialStates) {
-            if (modelChecking(queryFormula, s)){
-                return true;
+            if (!modelChecking(queryFormula, s)){
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 
@@ -301,18 +301,25 @@ public class SimpleModelChecker implements ModelChecker {
                 }
             }
         }
-        for (Transition t : transitions) {
-            if (constrainedTransitions.get(t) > 0) {
-                for (String action : t.getActions()) {
-                    if (((Until) CTL).getLeftActions().contains(action)) {
-                        State next = stateHashMap.get(t.getTarget());
-                        if (!seen.contains(next)) {
+        if (modelChecking(((Until) CTL).left, currentState)) {
+//            if(((Until) CTL).left instanceof BoolProp){
+//                if((((BoolProp) ((Until) CTL).left).value)){
+//                    transitions =
+//                }
+//            }
+            for (Transition t : transitions) {
+                if (constrainedTransitions.get(t) > 0) {
+                    for (String action : t.getActions()) {
+                        if (((Until) CTL).getLeftActions().contains(action)) {
+                            State next = stateHashMap.get(t.getTarget());
+                            if (!seen.contains(next)) {
 
-                            if (checkUntil(CTL, next, seen, true)) {
-                                return true;
+                                if (checkUntil(CTL, next, seen, true)) {
+                                    return true;
+                                }
                             }
+                            break;
                         }
-                        break;
                     }
                 }
             }
@@ -322,7 +329,7 @@ public class SimpleModelChecker implements ModelChecker {
 
     // Loops
     private boolean checkAlways(PathFormula CTL, State currentState, HashMap<State, Boolean> seen){
-        // Find the states satifying the formula
+        // Find the states satisfying the formula
         if (seen.containsKey(currentState)){
             return seen.get(currentState);
         }
@@ -423,7 +430,7 @@ public class SimpleModelChecker implements ModelChecker {
                                                     new Not(new ThereExists(new Until(left, right, leftActions, compRightActions))),
                                                     new And(
                                                             new Not(new ThereExists(new Until(left, new Not(right), leftActions, rightActions))),
-                                                            new Not(new ThereExists(new Until(left, new Not(left), leftActions, leftActions)))
+                                                            new Not(new ThereExists(new Until(left, left, leftActions, compLeftActions)))
                                                     )
 
                 );
