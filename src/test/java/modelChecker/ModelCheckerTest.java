@@ -34,32 +34,6 @@ public class ModelCheckerTest {
     }
 
     @Test
-    public void convertToENFTest(){
-        try {
-            Model model = Model.parseModel("src/test/resources/model1.json");
-
-            StateFormula fairnessConstraint = new FormulaParser("src/test/resources/constraint1.json").parse();
-            StateFormula query = new FormulaParser("src/test/resources/ctl1.json").parse();
-
-            ModelChecker mc = new SimpleModelChecker();
-
-
-            Transition[] transitions = model.getTransitions();
-            Set<String> allActions= new HashSet<>();
-            for(Transition transition: transitions){
-                Collections.addAll(allActions, transition.getActions());
-            }
-            System.out.println(allActions.toArray());
-            StateFormula formula = ((SimpleModelChecker) mc).convertToENF(query, allActions);
-            String enf = formula.toString();
-            assertEquals(enf, "");
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail(e.toString());
-        }
-    }
-
-    @Test
     public void modelOneDoesNotSatisfyCTLOne(){
         try{
             Model model = Model.parseModel("src/test/resources/model1.json");
@@ -131,18 +105,15 @@ public class ModelCheckerTest {
         try{
             Model model = Model.parseModel("src/test/resources/model3.json");
             StateFormula fairnessConstraint = new FormulaParser("src/test/resources/constraintTrue.json").parse();
-//            StateFormula queryFail1 = new FormulaParser("src/test/resources/model3/model3AXFail1.json").parse();
-//            boolean resultFail1 =  mc.check(model, fairnessConstraint, queryFail1);
-//            assertFalse(resultFail1);
-//            StateFormula queryFail2 = new FormulaParser("src/test/resources/model3/model3AXFail2.json").parse();
-//            boolean resultFail2 =  mc.check(model, fairnessConstraint, queryFail2);
-//            assertFalse(resultFail2);
+            StateFormula queryFail1 = new FormulaParser("src/test/resources/model3/model3AXFail1.json").parse();
+            boolean resultFail1 =  mc.check(model, fairnessConstraint, queryFail1);
+            assertFalse(resultFail1);
+            StateFormula queryFail2 = new FormulaParser("src/test/resources/model3/model3AXFail2.json").parse();
+            boolean resultFail2 =  mc.check(model, fairnessConstraint, queryFail2);
+            assertFalse(resultFail2);
             StateFormula queryPass1 = new FormulaParser("src/test/resources/model3/model3AXPass1.json").parse();
             boolean resultPass1 =  mc.check(model, fairnessConstraint, queryPass1);
             assertTrue(resultPass1);
-            StateFormula queryPass2 = new FormulaParser("src/test/resources/model3/model3AXPass2.json").parse();
-            boolean resultPass2 =  mc.check(model, fairnessConstraint, queryPass2);
-            assertTrue(resultPass2);
         }catch (IOException e) {
             e.printStackTrace();
             fail(e.toString());
@@ -191,12 +162,12 @@ public class ModelCheckerTest {
         try{
             Model model = Model.parseModel("src/test/resources/model3.json");
             StateFormula fairnessConstraint = new FormulaParser("src/test/resources/constraintTrue.json").parse();
-//            StateFormula queryFail1 = new FormulaParser("src/test/resources/model3/model3EUFail1.json").parse();
-//            boolean resultFail1 =  mc.check(model, fairnessConstraint, queryFail1);
-//            assertFalse(resultFail1);
-//            StateFormula queryFail2 = new FormulaParser("src/test/resources/model3/model3EUFail2.json").parse();
-//            boolean resultFail2 =  mc.check(model, fairnessConstraint, queryFail2);
-//            assertFalse(resultFail2);
+            StateFormula queryFail1 = new FormulaParser("src/test/resources/model3/model3EUFail1.json").parse();
+            boolean resultFail1 =  mc.check(model, fairnessConstraint, queryFail1);
+            assertFalse(resultFail1);
+            StateFormula queryFail2 = new FormulaParser("src/test/resources/model3/model3EUFail2.json").parse();
+            boolean resultFail2 =  mc.check(model, fairnessConstraint, queryFail2);
+            assertFalse(resultFail2);
             StateFormula queryPass = new FormulaParser("src/test/resources/model3/model3EUPass.json").parse();
             boolean resultPass =  mc.check(model, fairnessConstraint, queryPass);
             assertTrue(resultPass);
@@ -229,8 +200,5 @@ public class ModelCheckerTest {
             fail(e.toString());
         }
     }
-//    @Test
-//    public void modelMutualExclusionDoes
-
 
 }

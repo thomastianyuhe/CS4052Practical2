@@ -6,6 +6,7 @@ import formula.stateFormula.*;
 import model.Model;
 import model.State;
 import model.Transition;
+import sun.awt.image.ImageWatched;
 
 import javax.swing.*;
 import java.security.AllPermission;
@@ -16,6 +17,7 @@ public class SimpleModelChecker implements ModelChecker {
     private HashMap<String, State> stateHashMap;
     private HashMap<String, ArrayList<Transition>> transitionHashMap;
     private HashMap<Transition, Integer> constrainedTransitions = new HashMap<>();
+    private ArrayList<String> trace = new ArrayList<>();
 
     @Override
     public boolean check(Model model, StateFormula constraint, StateFormula query) {
@@ -61,7 +63,9 @@ public class SimpleModelChecker implements ModelChecker {
             }
         }
         for (State s : initialStates) {
-            if (!modelChecking(queryFormula, s)){
+            LinkedList<String> currentPath = new LinkedList<>();
+            currentPath.add(s.getName());
+            if (!modelChecking(queryFormula, s, currentPath)){
                 return false;
             }
         }
@@ -133,47 +137,72 @@ public class SimpleModelChecker implements ModelChecker {
         return valid;
     }
 
-    private boolean checkUntilBuild(PathFormula CTL, State currentState, HashSet<State> seen, boolean left){
+    private boolean checkUntilBuild(PathFormula CTL, State currentState, HashSet<State> seen, boolean right){
         boolean valid = false;
-        ArrayList<Transition> transitions = transitionHashMap.get(currentState.getName());
-        if (left) {
-            seen.add(currentState);
-            for (Transition t : transitions) {
-                for (String action : t.getActions()) {
-                    if (((Until) CTL).getRightActions().contains(action)) {
-                        State next = stateHashMap.get(t.getTarget());
-                        if (constrainedTransitions.containsKey(t)) {
-                            constrainedTransitions.put(t, constrainedTransitions.get(t) + 1);
-                        } else {
-                            constrainedTransitions.put(t, 1);
-                        }
-                        if (modelBuilding(((Until) CTL).right, next)) {
-                            valid = true;
-                        } else {
-                            constrainedTransitions.put(t, constrainedTransitions.get(t) - 1);
-                        }
-                        break;
-                    }
+        // If until is being used as a eventually, left will just be true
+        if (((Until) CTL).left instanceof BoolProp) {
+            if (((BoolProp) ((Until) CTL).left).value) {
+                if (modelBuilding(((Until) CTL).right, currentState)){
+                    return true;
                 }
             }
         }
-        for (Transition t : transitions) {
-            for (String action : t.getActions()) {
-                if (((Until) CTL).getLeftActions().contains(action)) {
-                    State next = stateHashMap.get(t.getTarget());
-                    if (!seen.contains(next)) {
-                        if (constrainedTransitions.containsKey(t)) {
-                            constrainedTransitions.put(t, constrainedTransitions.get(t) + 1);
-                        } else {
-                            constrainedTransitions.put(t, 1);
-                        }
-                        if (checkUntilBuild(CTL, next, seen, true)) {
-                            valid = true;
-                        } else {
-                            constrainedTransitions.put(t, constrainedTransitions.get(t) - 1);
+
+        // Checking that after a right transition, if right is satisfied
+        if (right) {
+            return modelBuilding(((Until) CTL).right, currentState);
+            // Else checking that after a left transition, if left is satisfied and so continue with search
+        } else if (modelBuilding(((Until) CTL).left, currentState)) {
+            // Get transitions
+            ArrayList<Transition> transitions = new ArrayList<Transition>();
+            if (transitionHashMap.containsKey(currentState.getName())) {
+                transitions = transitionHashMap.get(currentState.getName());
+            }
+
+            for (Transition t : transitions) {
+                if (constrainedTransitions.get(t) > 0) {
+                    // Checking if transitions is right transition
+                    for (String action : t.getActions()) {
+                        if (((Until) CTL).getRightActions().contains(action)) {
+                            State next = stateHashMap.get(t.getTarget());
+                            // Do I check for seen
+                            System.out.println("RIGHT");
+                            System.out.println(next.getName());
+                            if (constrainedTransitions.containsKey(t)){
+                                constrainedTransitions.put(t, constrainedTransitions.get(t) + 1);
+                            } else {
+                                constrainedTransitions.put(t, 1);
+                            }
+                            if (checkUntilBuild(CTL, next, seen, true)) {
+                                valid = true;
+                            } else {
+                                constrainedTransitions.put(t, constrainedTransitions.get(t) - 1);
+                            }
+                            break;
                         }
                     }
-                    break;
+                    // Checking if transition is left transition
+                    for (String action : t.getActions()) {
+                        if (((Until) CTL).getLeftActions().contains(action)) {
+                            State next = stateHashMap.get(t.getTarget());
+                            if (!seen.contains(next)) {
+                                seen.add(next);
+                                System.out.println("LEFT");
+                                System.out.println(next.getName());
+                                if (constrainedTransitions.containsKey(t)){
+                                    constrainedTransitions.put(t, constrainedTransitions.get(t) + 1);
+                                } else {
+                                    constrainedTransitions.put(t, 1);
+                                }
+                                if (checkUntilBuild(CTL, next, seen, false)) {
+                                    valid = true;
+                                } else {
+                                    constrainedTransitions.put(t, constrainedTransitions.get(t) - 1);
+                                }
+                            }
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -187,7 +216,7 @@ public class SimpleModelChecker implements ModelChecker {
         }
 
         boolean valid = false;
-        if (modelChecking(((Always) CTL).stateFormula, currentState)) {
+        if (modelBuilding(((Always) CTL).stateFormula, currentState)) {
             seen.put(currentState, Boolean.TRUE);
 
             ArrayList<Transition> transitions = transitionHashMap.get(currentState.getName());
@@ -201,7 +230,7 @@ public class SimpleModelChecker implements ModelChecker {
                         } else {
                             constrainedTransitions.put(t, 1);
                         }
-                        if (checkAlways(CTL, next, seen)) {
+                        if (checkAlwaysBuild(CTL, next, seen)) {
                             valid = true;
                         } else {
                             constrainedTransitions.put(t, constrainedTransitions.get(t) - 1);
@@ -217,25 +246,32 @@ public class SimpleModelChecker implements ModelChecker {
 
     @Override
     public String[] getTrace() {
-        // TODO Auto-generated method stub
-        return null;
+        return (String[]) trace.toArray();
     }
 
-    private boolean modelChecking(StateFormula CTL, State currentState) {
+    private void addTrace(LinkedList<String> currentPath){
+        if (trace.isEmpty()){
+            for(String s: currentPath){
+                trace.add(s);
+            }
+        }
+    }
+
+    private boolean modelChecking(StateFormula CTL, State currentState, LinkedList<String> currentPath) {
         if(CTL instanceof ThereExists){
             if (((ThereExists) CTL).pathFormula instanceof Always){
-                return checkAlways(((ThereExists) CTL).pathFormula, currentState, new HashMap<State, Boolean>());
+                return checkAlways(((ThereExists) CTL).pathFormula, currentState, new HashMap<State, Boolean>(), currentPath);
             } else if (((ThereExists) CTL).pathFormula instanceof Next){
-                return checkNext(((ThereExists) CTL).pathFormula, currentState);
+                return checkNext(((ThereExists) CTL).pathFormula, currentState, currentPath);
             } else if (((ThereExists) CTL).pathFormula instanceof Until){
-                return checkUntil(((ThereExists) CTL).pathFormula, currentState, new HashSet<State>(), false);
+                return checkUntil(((ThereExists) CTL).pathFormula, currentState, new HashSet<State>(), false, currentPath);
             }
         } else if (CTL instanceof And){
-            return modelChecking(((And) CTL).left, currentState) && modelChecking(((And) CTL).right, currentState);
+            return modelChecking(((And) CTL).left, currentState, currentPath) && modelChecking(((And) CTL).right, currentState, currentPath);
         } else if (CTL instanceof Or){
-            return modelChecking(((Or) CTL).left, currentState) || modelChecking(((Or) CTL).right, currentState);
+            return modelChecking(((Or) CTL).left, currentState, currentPath) || modelChecking(((Or) CTL).right, currentState, currentPath);
         } else if (CTL instanceof Not){
-            if(!modelChecking(((Not) CTL).stateFormula, currentState)){
+            if(!modelChecking(((Not) CTL).stateFormula, currentState, currentPath)){
                 return true;
             }
             return false;
@@ -249,16 +285,23 @@ public class SimpleModelChecker implements ModelChecker {
                     return true;
                 }
             }
+            addTrace(currentPath);
             return false;
 
         } else if (CTL instanceof BoolProp){
-            return ((BoolProp) CTL).value;
+            if (((BoolProp) CTL).value) {
+                return true;
+            } else {
+                addTrace(currentPath);
+                return false;
+            }
+
         }
         System.out.println("Should not reach here");
         return false;
     }
 
-    private boolean checkNext(PathFormula CTL, State currentState){
+    private boolean checkNext(PathFormula CTL, State currentState, LinkedList<String> currentPath){
         ArrayList<Transition> transitions = new ArrayList<Transition>();
         if (transitionHashMap.containsKey(currentState.getName())) {
             transitions = transitionHashMap.get(currentState.getName());
@@ -268,8 +311,13 @@ public class SimpleModelChecker implements ModelChecker {
                 for(String action: t.getActions()){
                     if (((Next) CTL).getActions().contains(action)) {
                         State next = stateHashMap.get(t.getTarget());
-                        if (modelChecking(((Next) CTL).stateFormula, next)) {
+                        currentPath.add(t.toString());
+                        currentPath.add(next.getName());
+                        if (modelChecking(((Next) CTL).stateFormula, next, currentPath)) {
                             return true;
+                        } else {
+                            currentPath.pollLast();
+                            currentPath.pollLast();
                         }
                         break;
                     }
@@ -279,43 +327,57 @@ public class SimpleModelChecker implements ModelChecker {
         return false;
     }
 
-    private boolean checkUntil(PathFormula CTL, State currentState, HashSet<State> seen, boolean left){
-        ArrayList<Transition> transitions = new ArrayList<Transition>();
-        if (transitionHashMap.containsKey(currentState.getName())) {
-            transitions = transitionHashMap.get(currentState.getName());
+    private boolean checkUntil(PathFormula CTL, State currentState, HashSet<State> seen, boolean right, LinkedList<String> currentPath){
+        // If until is being used as a eventually, left will just be true
+        if (((Until) CTL).left instanceof BoolProp) {
+            if (((BoolProp) ((Until) CTL).left).value) {
+                if (modelChecking(((Until) CTL).right, currentState, currentPath)){
+                    return true;
+                }
+            }
         }
 
-        if (left) {
-            seen.add(currentState);
+            // Checking that after a right transition, if right is satisfied
+        if (right) {
+            return modelChecking(((Until) CTL).right, currentState, currentPath);
+            // Else checking that after a left transition, if left is satisfied and so continue with search
+        } else if (modelChecking(((Until) CTL).left, currentState, currentPath)) {
+            // Get transitions
+            ArrayList<Transition> transitions = new ArrayList<Transition>();
+            if (transitionHashMap.containsKey(currentState.getName())) {
+                transitions = transitionHashMap.get(currentState.getName());
+            }
+
             for (Transition t : transitions) {
                 if (constrainedTransitions.get(t) > 0) {
+                    // Checking if transitions is right transition
                     for (String action : t.getActions()) {
                         if (((Until) CTL).getRightActions().contains(action)) {
                             State next = stateHashMap.get(t.getTarget());
-                            if (modelChecking(((Until) CTL).right, next)) {
+                            currentPath.add(t.toString());
+                            currentPath.add(next.getName());
+                            if (checkUntil(CTL, next, seen, true, currentPath)) {
                                 return true;
+                            } else {
+                                currentPath.pollLast();
+                                currentPath.pollLast();
                             }
                             break;
                         }
                     }
-                }
-            }
-        }
-        if (modelChecking(((Until) CTL).left, currentState)) {
-//            if(((Until) CTL).left instanceof BoolProp){
-//                if((((BoolProp) ((Until) CTL).left).value)){
-//                    transitions =
-//                }
-//            }
-            for (Transition t : transitions) {
-                if (constrainedTransitions.get(t) > 0) {
+                    // Checking if transition is left transition
                     for (String action : t.getActions()) {
                         if (((Until) CTL).getLeftActions().contains(action)) {
                             State next = stateHashMap.get(t.getTarget());
                             if (!seen.contains(next)) {
-
-                                if (checkUntil(CTL, next, seen, true)) {
+                                seen.add(next);
+                                currentPath.add(t.toString());
+                                currentPath.add(next.getName());
+                                if (checkUntil(CTL, next, seen, false, currentPath)) {
                                     return true;
+                                } else {
+                                    currentPath.pollLast();
+                                    currentPath.pollLast();
                                 }
                             }
                             break;
@@ -327,29 +389,38 @@ public class SimpleModelChecker implements ModelChecker {
         return false;
     }
 
-    // Loops
-    private boolean checkAlways(PathFormula CTL, State currentState, HashMap<State, Boolean> seen){
+
+    private boolean checkAlways(PathFormula CTL, State currentState, HashMap<State, Boolean> seen, LinkedList<String> currentPath){
         // Find the states satisfying the formula
         if (seen.containsKey(currentState)){
             return seen.get(currentState);
         }
 
-        if (modelChecking(((Always) CTL).stateFormula, currentState)) {
+        if (modelChecking(((Always) CTL).stateFormula, currentState, currentPath)) {
             seen.put(currentState, Boolean.TRUE);
 
             ArrayList<Transition> transitions = new ArrayList<Transition>();
             if (transitionHashMap.containsKey(currentState.getName())) {
                 transitions = transitionHashMap.get(currentState.getName());
             }
-            for (Transition t : transitions) {
-                if (constrainedTransitions.get(t) > 0) {
-                    for (String action : t.getActions()) {
-                        if (((Always) CTL).getActions().contains(action)) {
-                            State next = stateHashMap.get(t.getTarget());
-                            if (checkAlways(CTL, next, seen)) {
-                                return true;
+            if (transitions.isEmpty()){
+                return true;
+            } else {
+                for (Transition t : transitions) {
+                    if (constrainedTransitions.get(t) > 0) {
+                        for (String action : t.getActions()) {
+                            if (((Always) CTL).getActions().contains(action)) {
+                                State next = stateHashMap.get(t.getTarget());
+                                currentPath.add(t.toString());
+                                currentPath.add(next.getName());
+                                if (checkAlways(CTL, next, seen, currentPath)) {
+                                    return true;
+                                } else {
+                                    currentPath.pollLast();
+                                    currentPath.pollLast();
+                                }
+                                break;
                             }
-                            break;
                         }
                     }
                 }
